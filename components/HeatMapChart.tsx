@@ -12,6 +12,27 @@ export default function HeatMap() {
 
         let xData = [];
         let yData = [];
+
+        const data = [
+            [100, 100, 0],
+            [80, 170, 15],
+            [210, 70, 14],
+            [220, 110, 3],
+            [105, 150, 0],
+            [110, 170, 12],
+            [100, 130, 11],
+            [90, 120, 10],
+            [70, 160, 9],
+            [250, 180, 8],
+            [280, 190, 7],
+            [190, 220, 6],
+            [60, 80, 5],
+            [30, 30, 4],
+            [122, 50, 3],
+            [230, 30, 2],
+            [250, 70, 0],
+        ]
+
         function generateData(theta, min, max) {
             // let data = [];
             for (let i = 0; i <= 300; i++) {
@@ -53,11 +74,18 @@ export default function HeatMap() {
                 max: 15,
                 left: 'right',
                 top: 'center',
-                calculable: true,
+                // calculable: true,
                 realtime: false,
-                splitNumber: 3,
+                splitNumber: 6,
                 inRange: {
-                    color: ['#ff0005', '#e11216', '#951315']
+                    color: [
+                        '#ddeddf',
+                        '#e2adb9',
+                        '#e88ba0',
+                        '#eb6181',
+                        '#f7436c',
+                        '#f70039',
+                    ]
                 }
             },
             graphic: {
@@ -103,13 +131,13 @@ export default function HeatMap() {
                     name: 'Gaussian',
                     type: 'scatter',
                     symbolSize: 20,
-                    data: [
-                        // dimX   dimY   other dimensions ...
-                        [100, 100, 0],
-                        [80, 170, 8],
-                        [210, 70, 12],
-                        [220, 110, 3]
-                    ]
+                    blur: {
+                        itemStyle: {
+                            shadowBlur: 10,
+                            shadowColor: 'blue'
+                        }
+                    },
+                    data
                 }
             ]
         };
